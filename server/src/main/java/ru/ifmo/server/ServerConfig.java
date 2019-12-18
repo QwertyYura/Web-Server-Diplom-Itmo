@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Holds server configs: local port, handler mappings, etc.
  */
-public class ServerConfig {
+public class ServerConfig implements Dispatcher {
     /** Default local port. */
     public static final int DFLT_PORT = 8080;
 
@@ -116,5 +116,10 @@ public class ServerConfig {
                 ", handlers=" + handlers +
                 ", socketTimeout=" + socketTimeout +
                 '}';
+    }
+
+    @Override
+    public String dispatch(Request request, Response response) {
+        return null;
     }
 }
