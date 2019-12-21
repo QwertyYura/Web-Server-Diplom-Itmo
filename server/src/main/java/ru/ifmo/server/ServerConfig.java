@@ -6,13 +6,14 @@ import java.util.Map;
 /**
  * Holds server configs: local port, handler mappings, etc.
  */
-public class ServerConfig implements Dispatcher {
+public class ServerConfig {
     /** Default local port. */
     public static final int DFLT_PORT = 8080;
 
     private int port = DFLT_PORT;
     private Map<String, Handler> handlers;
     private int socketTimeout;
+    private Dispatcher dispatcher;
 
     public ServerConfig() {
         handlers = new HashMap<>();
@@ -24,6 +25,7 @@ public class ServerConfig implements Dispatcher {
         port = config.port;
         handlers = new HashMap<>(config.handlers);
         socketTimeout = config.socketTimeout;
+        dispatcher = config.dispatcher;
     }
 
     /**
@@ -115,11 +117,15 @@ public class ServerConfig implements Dispatcher {
                 "port=" + port +
                 ", handlers=" + handlers +
                 ", socketTimeout=" + socketTimeout +
+                ", dispatcher=" + dispatcher +
                 '}';
     }
 
-    @Override
-    public String dispatch(Request request, Response response) {
-        return null;
+    public ServerConfig setDispatcher(Dispatcher dispatcher) {
+        this.dispatcher = dispatcher;
+        return this;
+    }
+    public Dispatcher getDispatcher() {
+        return dispatcher;
     }
 }
