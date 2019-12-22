@@ -120,7 +120,7 @@ public class ServerConfig {
                 ", dispatcher=" + dispatcher +
                 '}';
     }
-
+    //Добавление диспатчера
     public ServerConfig setDispatcher(Dispatcher dispatcher) {
         this.dispatcher = dispatcher;
         return this;
