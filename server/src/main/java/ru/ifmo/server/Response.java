@@ -9,6 +9,7 @@ import java.net.Socket;
  */
 public class Response {
     final Socket socket;
+    String response;
 
     Response(Socket socket) {
         this.socket = socket;
@@ -20,9 +21,15 @@ public class Response {
     public OutputStream getOutputStream() {
         try {
             return socket.getOutputStream();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw new ServerException("Cannot get output stream", e);
         }
     }
-}
+
+    public void redirect(String location) {
+
+        }
+    public void forward(String resource){
+
+        }
+    }
